@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Travity</string>
+    <string name="error_empty_field">Please fill all required fields.</string>
+    <string name="error_password_invalid">Please enter a valid password.</string>
+    <string name="error_no_user_data">User data does not exist.</string>
+    <string name="error_no_user_account">User account does not exist.</string>
+    <string name="error_email_invalid">Please enter a valid email address.</string>
+    <string name="error_password_invalid_case">Please enter a valid password. (6~24 letters, 0-9 + A-z)</string>
+    <string name="error_password_different">Please enter same password in both fields.</string>
+</resources>
