@@ -7,18 +7,34 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.david0926.travity.databinding.ActivityLoginBinding;
+import com.david0926.travity.model.FlightModel;
+import com.david0926.travity.model.NotificationModel;
+import com.david0926.travity.model.TodoModel;
 import com.david0926.travity.model.UserModel;
 import com.david0926.travity.util.UserCache;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.google.firebase.auth.SignInMethodQueryResult;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -34,12 +50,23 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
+    private GoogleSignInOptions gso;
+    private GoogleSignInClient mGoogleSignInClient;
+    private int GOOGLE_LOGIN_INTENT_CODE = 5001;
+
     private ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.default_web_client_id))
+                .requestEmail()
+                .build();
+
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         //scroll to bottom when keyboard up
         new TedKeyboardObserver(this).listen(isShow -> {
@@ -68,6 +95,13 @@ public class LoginActivity extends AppCompatActivity {
         binding.btnLoginRegi.setOnClickListener(view -> {
             startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             overridePendingTransition(R.anim.slide_up, R.anim.slide_up_before);
+        });
+
+        //google sign in button clicked
+        binding.btnLoginGoogle.setOnClickListener(view -> {
+            Intent googleSignIntent = mGoogleSignInClient.getSignInIntent();
+            startActivityForResult(googleSignIntent, GOOGLE_LOGIN_INTENT_CODE); // 구글좌가 9001이라고 말씀하시길
+
         });
 
         //finish when sign up success
@@ -159,4 +193,42 @@ public class LoginActivity extends AppCompatActivity {
         super.onDestroy();
         unregisterReceiver(broadcastReceiver);
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == GOOGLE_LOGIN_INTENT_CODE) { // 구글 로그인창 코드
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            try {
+                GoogleSignInAccount account = task.getResult(ApiException.class);
+                firebaseAuthWithGoogle(account.getIdToken());
+            } catch (ApiException e) {
+                e.printStackTrace();
+                showErrorMsg("구글 API 에러");
+            }
+        }
+    }
+
+    private void firebaseAuthWithGoogle(String idToken) {
+        AuthCredential credential = GoogleAuthProvider.getCredential(idToken, null);
+        firebaseAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            FirebaseUser user = firebaseAuth.getCurrentUser();
+                            UserModel um = new UserModel();
+                            um.setEmail(user.getEmail());
+                            um.setName(user.getDisplayName());
+                            UserCache.setUser(LoginActivity.this, um);
+
+                            finishSignIn();
+                        } else {
+                            showErrorMsg("구글 로그인에 실패했습니다.");
+                        }
+                    }
+                });
+    }
+
 }
