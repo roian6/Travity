@@ -18,6 +18,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.david0926.travity.databinding.ActivityLoginBinding;
+import com.david0926.travity.model.FlightModel;
+import com.david0926.travity.model.NotificationModel;
+import com.david0926.travity.model.TodoModel;
 import com.david0926.travity.model.UserModel;
 import com.david0926.travity.util.UserCache;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -221,7 +224,6 @@ public class LoginActivity extends AppCompatActivity {
                             UserCache.setUser(LoginActivity.this, um);
 
                             finishSignIn();
-
                         } else {
                             showErrorMsg("구글 로그인에 실패했습니다.");
                         }
