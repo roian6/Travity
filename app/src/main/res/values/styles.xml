@@ -8,7 +8,31 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/TextViewStyle</item>
     </style>
+
+    <style name="TextViewStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="ButtonStyleColored" parent="Widget.AppCompat.Button">
+        <item name="android:fontFamily">@font/notosanskr_bold</item>
+        <item name="android:background">@drawable/round_box</item>
+        <item name="android:backgroundTint">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
+    <style name="ButtonStyleColorless" parent="Widget.AppCompat.Button">
+        <item name="android:fontFamily">@font/notosanskr_bold</item>
+        <item name="android:elevation">20dp</item>
+        <item name="android:background">@drawable/round_box</item>
+        <item name="android:backgroundTint">@android:color/white</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">17sp</item>
+    </style>
+
 
     <style name="BottomNavigationTheme" parent="Theme.AppCompat.Light">
         <item name="colorPrimary">@color/colorPrimary</item>

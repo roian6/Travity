@@ -2,7 +2,6 @@ package com.david0926.travity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.WindowManager;
 
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
@@ -16,7 +15,6 @@ public class LandingActivity extends AppIntro {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         addSlide(LandingFragment.newInstance(R.layout.activity_landing1));
         addSlide(LandingFragment.newInstance(R.layout.activity_landing2));
@@ -49,7 +47,7 @@ public class LandingActivity extends AppIntro {
 
 
     private void finishLanding() {
-        SharedPreferenceUtil.putBoolean(LandingActivity.this, "landing_shown", true);
+        SharedPreferenceUtil.put(this, "user_progress", "progress_login");
         startActivity(new Intent(LandingActivity.this, LoginActivity.class));
         finish();
     }

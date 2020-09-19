@@ -5,6 +5,12 @@
     <string name="error_no_user_data">User data does not exist.</string>
     <string name="error_no_user_account">User account does not exist.</string>
     <string name="error_email_invalid">Please enter a valid email address.</string>
-    <string name="error_password_invalid_case">Please enter a valid password. (6~24 letters, 0-9 + A-z)</string>
+    <string name="error_password_invalid_case">Please enter a valid password. (6~24 letters, 0–9 + A-z)</string>
     <string name="error_password_different">Please enter same password in both fields.</string>
+
+    <string name="splash_phrase">준비부터 이륙까지 편리하게</string>
+    <string name="splash_copyright">© 2020. Team Travity. all rights reserved.</string>
+    <string name="welcome_title">Travity에 오신 것을 환영합니다!</string>
+    <string name="welcome_text">Travity는 여행 준비부터 공항까지, \n여러분의 편안한 비행을 안내하는 앱입니다.</string>
+    <string name="welcome_start">시작하기</string>
 </resources>

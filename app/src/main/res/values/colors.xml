@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6c63ff</color>
-    <color name="colorPrimaryDark">#6c63ff</color>
-    <color name="colorAccent">#6c63ff</color>
+    <color name="colorPrimary">#3969ff</color>
+    <color name="colorPrimaryDark">#3969ff</color>
+    <color name="colorAccent">#3969ff</color>
     <color name="materialGray0">#f8f9fa</color>
     <color name="materialGray1">#f1f3f5</color>
     <color name="materialGray2">#e9ecef</color>
@@ -17,4 +17,6 @@
     <color name="materialGreen">#1abc9c</color>
     <color name="materialYellow">#f1c40f</color>
     <color name="materialRed">#e74c32</color>
+
+    <color name="colorGray">#666666</color>
 </resources>
