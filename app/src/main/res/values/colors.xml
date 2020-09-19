@@ -19,4 +19,5 @@
     <color name="materialRed">#e74c32</color>
 
     <color name="colorGray">#666666</color>
+    <color name="colorGrayLight">#dedede</color>
 </resources>

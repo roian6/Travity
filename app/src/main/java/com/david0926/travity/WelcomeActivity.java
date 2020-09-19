@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.david0926.travity.databinding.ActivityWelcomeBinding;
+import com.david0926.travity.onboard.OnBoardActivity;
 import com.david0926.travity.util.SharedPreferenceUtil;
 
 public class WelcomeActivity extends AppCompatActivity {
@@ -22,7 +23,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
     public void startBtnClick() {
         SharedPreferenceUtil.put(this, "user_progress", "progress_on_board");
-        startActivity(new Intent(WelcomeActivity.this, LandingActivity.class));
+        startActivity(new Intent(WelcomeActivity.this, OnBoardActivity.class));
         finish();
     }
 }

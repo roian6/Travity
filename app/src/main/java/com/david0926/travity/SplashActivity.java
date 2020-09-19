@@ -7,6 +7,7 @@ import android.os.Looper;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.david0926.travity.onboard.OnBoardActivity;
 import com.david0926.travity.util.SharedPreferenceUtil;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,13 +23,16 @@ public class SplashActivity extends AppCompatActivity {
             String userProgress = (String) SharedPreferenceUtil
                     .getString(this, "user_progress", "progress_welcome");
 
+            // TODO: debug - remove this line to show welcome & onboard screen once
+            userProgress = "progress_welcome";
+
             switch (userProgress) {
                 case "progress_welcome":
                     startActivity(new Intent(SplashActivity.this, WelcomeActivity.class));
                     break;
 
                 case "progress_on_board":
-                    startActivity(new Intent(SplashActivity.this, LandingActivity.class));
+                    startActivity(new Intent(SplashActivity.this, OnBoardActivity.class));
                     break;
 
                 default:
