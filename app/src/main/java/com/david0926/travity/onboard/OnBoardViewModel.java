@@ -21,13 +21,8 @@ public class OnBoardViewModel extends ViewModel {
                 (t, position) -> t.view.setClickable(false)).attach();
     }
 
-    public MutableLiveData<Integer> pagePosition = new MutableLiveData<>();
-    public MutableLiveData<Integer> pagePositionData = new MutableLiveData<>();
-
-    public OnBoardViewModel() {
-        pagePosition.setValue(0);
-        pagePositionData.setValue(0);
-    }
+    public MutableLiveData<Integer> pagePosition = new MutableLiveData<>(0);
+    public MutableLiveData<Integer> pagePositionData = new MutableLiveData<>(0);
 
     public void increasePagePosition() {
         int value = pagePosition.getValue();

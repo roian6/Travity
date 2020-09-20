@@ -1,7 +1,9 @@
 package com.david0926.travity.util;
 
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
 
 import androidx.databinding.BindingAdapter;
@@ -22,6 +24,17 @@ public class BindingOptions {
     @BindingAdapter("bindImageSrc")
     public static void bindImageSrc(ImageView v, Drawable d) {
         v.setImageDrawable(d);
+    }
+
+    @BindingAdapter("bindFocusTo")
+    public static void bindFocusTo(View v, View v1) {
+        v.setOnClickListener(view -> v1.post(() -> {
+            v1.setFocusableInTouchMode(true);
+            v1.requestFocus();
+            InputMethodManager imm = (InputMethodManager)
+                    v.getContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(v1, 0);
+        }));
     }
 
 }
