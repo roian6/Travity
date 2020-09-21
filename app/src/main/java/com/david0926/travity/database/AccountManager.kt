@@ -25,8 +25,8 @@ fun addGoogleAccount(name: String, email: String) {
                 }
                 // Do something...
                 db.collection("users")
-                        .document(email)
-                        .set(UserModel(name, email, timeNow()))
+                                .document(email)
+                                .set(UserModel(name, email, timeNow()))
                         .addOnSuccessListener {
                             return@addOnSuccessListener
                         }

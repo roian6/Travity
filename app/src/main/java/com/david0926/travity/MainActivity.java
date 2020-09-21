@@ -13,7 +13,12 @@ import com.david0926.travity.databinding.ActivityMainBinding;
 import com.david0926.travity.fragment.MainFragment1;
 import com.david0926.travity.fragment.MainFragment2;
 import com.david0926.travity.fragment.MainFragment3;
+import com.david0926.travity.model.FlightModel;
+import com.david0926.travity.model.NotificationModel;
+import com.david0926.travity.model.TodoModel;
+import com.david0926.travity.util.UserCache;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 import kotlin.Unit;
@@ -27,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-
 
         binding.bottomMain.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {
