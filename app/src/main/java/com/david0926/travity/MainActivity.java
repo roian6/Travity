@@ -7,10 +7,17 @@ import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.david0926.travity.database.AccountManagerKt;
+import com.david0926.travity.database.DataManagerKt;
 import com.david0926.travity.databinding.ActivityMainBinding;
 import com.david0926.travity.fragment.MainFragment1;
 import com.david0926.travity.fragment.MainFragment2;
 import com.david0926.travity.fragment.MainFragment3;
+
+import java.util.Map;
+
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+
 
         binding.bottomMain.setOnNavigationItemSelectedListener(item -> {
             switch (item.getItemId()) {

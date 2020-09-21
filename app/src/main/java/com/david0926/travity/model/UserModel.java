@@ -7,7 +7,7 @@ public class UserModel {
     private String name, email, time;
     private ArrayList<NotificationModel> notificationModels;
     private ArrayList<TodoModel> todoModels;
-    private FlightModel flight; // 현재 비행 정보
+    private ArrayList<FlightModel> flights; // 현재 비행 정보
 
     public UserModel(){}
 
@@ -25,13 +25,13 @@ public class UserModel {
         this.todoModels = todoModels;
     }
 
-    public UserModel(String name, String email, String time, ArrayList<NotificationModel> notificationModels, ArrayList<TodoModel> todoModels, FlightModel flight) {
+    public UserModel(String name, String email, String time, ArrayList<NotificationModel> notificationModels, ArrayList<TodoModel> todoModels, ArrayList<FlightModel> flights) {
         this.name = name;
         this.email = email;
         this.time = time;
         this.notificationModels = notificationModels;
         this.todoModels = todoModels;
-        this.flight = flight;
+        this.flights = flights;
     }
 
     public String getName() {
@@ -74,11 +74,11 @@ public class UserModel {
         this.todoModels = todoModels;
     }
 
-    public FlightModel getFlight() {
-        return flight;
+    public ArrayList<FlightModel> getFlights() {
+        return flights;
     }
 
-    public void setFlight(FlightModel flight) {
-        this.flight = flight;
+    public void setFlights(ArrayList<FlightModel> flights) {
+        this.flights = flights;
     }
 }

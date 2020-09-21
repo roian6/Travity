@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
+import com.david0926.travity.database.AccountManagerKt;
 import com.david0926.travity.databinding.ActivityLoginBinding;
 import com.david0926.travity.model.FlightModel;
 import com.david0926.travity.model.NotificationModel;
@@ -224,8 +225,9 @@ public class LoginActivity extends AppCompatActivity {
                             um.setEmail(user.getEmail());
                             um.setName(user.getDisplayName());
                             UserCache.setUser(LoginActivity.this, um);
-
+                            AccountManagerKt.addGoogleAccount(user.getDisplayName(),user.getEmail());
                             finishSignIn();
+
                         } else {
                             showErrorMsg("구글 로그인에 실패했습니다.");
                         }
