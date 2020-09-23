@@ -15,29 +15,41 @@ public class OnBoardViewModel extends ViewModel {
         pager.setCurrentItem(position);
     }
 
+    @BindingAdapter("bindPagerCallback")
+    public static void bindPagerCallback(ViewPager2 pager, ViewPager2.OnPageChangeCallback c){
+        pager.registerOnPageChangeCallback(c);
+    }
+
     @BindingAdapter("bindTabMediator")
     public static void bindTabMediator(TabLayout tab, ViewPager2 pager) {
         new TabLayoutMediator(tab, pager,
                 (t, position) -> t.view.setClickable(false)).attach();
     }
 
-    public MutableLiveData<Integer> pagePosition = new MutableLiveData<>(0);
+    public MutableLiveData<Integer> currentPage = new MutableLiveData<>(0);
     public MutableLiveData<Integer> pagePositionData = new MutableLiveData<>(0);
 
-    public void increasePagePosition() {
-        int value = pagePosition.getValue();
-        if (pagePosition.getValue() < 3) {
+    public ViewPager2.OnPageChangeCallback pagerCallback = new ViewPager2.OnPageChangeCallback() {
+        @Override
+        public void onPageSelected(int position) {
+            currentPage.setValue(position);
+        }
+    };
+
+    public void nextPage() {
+        int value = currentPage.getValue();
+        if (currentPage.getValue() < 3) {
             value++;
-            pagePosition.setValue(value);
+            currentPage.setValue(value);
             pagePositionData.setValue(value);
         }
     }
 
-    public void decreasePagePosition() {
-        int value = pagePosition.getValue();
-        if (pagePosition.getValue() > 0) {
+    public void previousPage() {
+        int value = currentPage.getValue();
+        if (currentPage.getValue() > 0) {
             value--;
-            pagePosition.setValue(value);
+            currentPage.setValue(value);
             pagePositionData.setValue(value);
         }
     }

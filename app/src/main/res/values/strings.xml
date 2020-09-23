@@ -39,6 +39,14 @@
     <string name="on_board_4_text">Travity는 공항 도착부터 이륙까지 단계 별로 안내합니다.
         \n식당, 화장실, 면세점 위치도 찾아보세요.</string>
     <string name="on_board_skip">SKIP</string>
+    <string name="login_login">로그인</string>
+    <string name="login_email_register">이메일로 회원가입</string>
+    <string name="login_google_register">구글로 시작하기</string>
+    <string name="login_forgot_password">비밀번호를 잊으셨나요?</string>
+    <string name="login_email">이메일</string>
+    <string name="login_pw">비밀번호</string>
+    <string name="register_next">다음</string>
+    <string name="register_finish">완료</string>
 
 
 </resources>

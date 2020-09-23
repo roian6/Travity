@@ -6,11 +6,11 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
-import androidx.viewpager2.widget.ViewPager2;
 
 import com.david0926.travity.LoginActivity;
 import com.david0926.travity.R;
 import com.david0926.travity.databinding.ActivityOnBoardBinding;
+import com.david0926.travity.util.SharedPreferenceUtil;
 
 public class OnBoardActivity extends AppCompatActivity {
 
@@ -27,23 +27,19 @@ public class OnBoardActivity extends AppCompatActivity {
         viewModel = ViewModelProviders.of(this).get(OnBoardViewModel.class);
         binding.setViewModel(viewModel);
 
+        //TODO: move to viewModel
         OnBoardPagerAdapter adapter = new OnBoardPagerAdapter(this);
         binding.pagerOnBoard.setAdapter(adapter);
-        binding.pagerOnBoard.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
-            @Override
-            public void onPageSelected(int position) {
-                viewModel.pagePosition.setValue(position);
-            }
-        });
     }
 
     @Override
     public void onBackPressed() {
-        if (viewModel.pagePosition.getValue() != 0) viewModel.decreasePagePosition();
+        if (viewModel.currentPage.getValue() != 0) viewModel.previousPage();
         else super.onBackPressed();
     }
 
     public void finishOnBoard() {
+        SharedPreferenceUtil.put(this, "user_progress", "progress_login");
         startActivity(new Intent(OnBoardActivity.this, LoginActivity.class));
         finish();
     }

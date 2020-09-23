@@ -85,7 +85,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosanskr_light"
-                        android:text="이메일"
+                        android:text="@string/login_email"
                         android:textSize="12sp" />
 
                     <EditText
@@ -95,7 +95,6 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:fontFamily="@font/notosanskr_bold"
-                        android:hint="이메일을 입력해주세요"
                         android:importantForAutofill="no"
                         android:inputType="textEmailAddress"
                         android:maxLines="1"
@@ -129,7 +128,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosanskr_light"
-                        android:text="비밀번호"
+                        android:text="@string/login_pw"
                         android:textSize="12sp" />
 
                     <EditText
@@ -139,7 +138,6 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:fontFamily="@font/notosanskr_bold"
-                        android:hint="비밀번호를 입력해주세요"
                         android:importantForAutofill="no"
                         android:inputType="textPassword"
                         android:maxLines="1"
@@ -158,9 +156,9 @@
                     android:id="@+id/textView12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingVertical="8dp"
                     android:fontFamily="@font/notosanskr_bold"
-                    android:text="비밀번호를 잊으셨나요?"
+                    android:paddingVertical="8dp"
+                    android:text="@string/login_forgot_password"
                     android:textColor="@color/colorOrange"
                     android:textSize="12sp"
                     app:layout_constraintEnd_toEndOf="@+id/linearLayout2"
@@ -169,10 +167,10 @@
                     app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
                 <TextView
-                    android:layout_marginTop="8dp"
                     android:id="@+id/txt_login_error"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
                     android:fontFamily="@font/productb"
                     android:text="Error Message"
                     android:textColor="@color/materialRed"
@@ -210,7 +208,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/notosanskr_bold"
-                        android:text="로그인"
+                        android:text="@string/login_login"
                         android:textColor="@android:color/white"
                         android:textSize="17sp"
                         android:visibility="@{!onProgress}" />
@@ -230,7 +228,7 @@
                 android:clickable="@{!onProgress}"
                 android:elevation="0dp"
                 android:paddingVertical="6dp"
-                android:text="이메일로 회원가입"
+                android:text="@string/login_email_register"
                 app:layout_constraintBottom_toTopOf="@+id/btn_login_google"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -252,7 +250,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/notosanskr_bold"
-                    android:text="구글로 시작하기"
+                    android:text="@string/login_google_register"
                     android:textColor="@color/colorPrimary"
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="parent"

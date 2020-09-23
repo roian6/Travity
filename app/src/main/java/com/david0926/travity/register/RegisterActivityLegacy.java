@@ -1,4 +1,4 @@
-package com.david0926.travity;
+package com.david0926.travity.register;
 
 import android.app.Activity;
 import android.content.Context;
@@ -14,7 +14,9 @@ import android.view.inputmethod.InputMethodManager;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
-import com.david0926.travity.databinding.ActivityRegisterBinding;
+import com.david0926.travity.MainActivity;
+import com.david0926.travity.R;
+import com.david0926.travity.databinding.ActivityRegisterLegacyBinding;
 import com.david0926.travity.model.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -28,12 +30,12 @@ import java.util.regex.Pattern;
 import gun0912.tedkeyboardobserver.TedKeyboardObserver;
 
 
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivityLegacy extends AppCompatActivity {
 
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
-    private ActivityRegisterBinding binding;
+    private ActivityRegisterLegacyBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,7 +100,7 @@ public class RegisterActivity extends AppCompatActivity {
         binding.lottieRegiFinish.playAnimation();
 
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+            startActivity(new Intent(RegisterActivityLegacy.this, MainActivity.class));
             finish();
         }, binding.lottieRegiFinish.getDuration() + 1000);
     }

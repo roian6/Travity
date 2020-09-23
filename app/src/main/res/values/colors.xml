@@ -21,6 +21,7 @@
     <color name="colorGray">#666666</color>
     <color name="colorGrayLight">#dedede</color>
     <color name="colorGrayBright">#ededed</color>
+    <color name="colorWhite">#ffffff</color>
 
     <color name="colorOrange">#ffa43d</color>
 </resources>
