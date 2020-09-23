@@ -3,14 +3,19 @@
 
     <item
         android:id="@+id/action_1"
-        android:icon="@drawable/ic_baseline_devices_24"
-        android:title="My Device" />
+        android:icon="@drawable/ic_home"
+        android:title="홈" />
     <item
         android:id="@+id/action_2"
-        android:icon="@drawable/ic_baseline_bar_chart_24"
-        android:title="Analytics" />
+        android:icon="@drawable/ic_checklist"
+        android:title="준비" />
     <item
         android:id="@+id/action_3"
-        android:icon="@drawable/ic_baseline_more_horiz_24"
-        android:title="More" />
+        android:icon="@drawable/ic_flight"
+        android:title="비행" />
+
+    <item
+        android:id="@+id/action_4"
+        android:icon="@drawable/ic_user"
+        android:title="마이페이지" />
 </menu>

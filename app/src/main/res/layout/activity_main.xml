@@ -15,6 +15,7 @@
         tools:context=".MainActivity">
 
         <FrameLayout
+            android:background="@android:color/white"
             android:id="@+id/frame_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -31,7 +32,7 @@
             android:layout_gravity="bottom"
             android:background="@android:color/white"
             android:theme="@style/BottomNavigationTheme"
-            app:itemIconSize="26dp"
+            app:itemIconSize="20dp"
             app:labelVisibilityMode="labeled"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
