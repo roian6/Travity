@@ -1,6 +1,5 @@
 package com.david0926.travity.util;
 
-import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -38,7 +37,7 @@ public class InfoAdapter extends RecyclerView.Adapter<InfoAdapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_info, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_main1_info, parent, false);
         InfoAdapter.ViewHolder vh = new InfoAdapter.ViewHolder(view);
         return vh;
     }

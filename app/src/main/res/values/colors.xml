@@ -3,6 +3,7 @@
     <color name="colorPrimary">#3969ff</color>
     <color name="colorPrimaryDark">#3969ff</color>
     <color name="colorAccent">#3969ff</color>
+    <color name="colorPrimaryLight">#d7e1ff</color>
     <color name="materialGray0">#f8f9fa</color>
     <color name="materialGray1">#f1f3f5</color>
     <color name="materialGray2">#e9ecef</color>
@@ -24,4 +25,5 @@
     <color name="colorWhite">#ffffff</color>
 
     <color name="colorOrange">#ffa43d</color>
+    <color name="colorDarkOrange">#ff754a</color>
 </resources>
