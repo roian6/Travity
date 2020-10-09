@@ -10,9 +10,12 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
 import com.david0926.travity.R;
 import com.david0926.travity.databinding.FragmentMain2Binding;
+import com.david0926.travity.util.ViewpagerAdapater;
+import com.google.android.material.tabs.TabLayoutMediator;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -35,6 +38,9 @@ public class MainFragment2 extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main2, container, false);
+
+        binding.viewpager.setAdapter(new ViewpagerAdapater(getActivity()));
+        new TabLayoutMediator(binding.tabLayout, binding.viewpager, (tab, position) -> {tab.setText(position == 0 ? "할일" : "준비물");}).attach();
 
         return binding.getRoot();
     }

@@ -7,6 +7,7 @@ public class UserModel {
     private String name, email, time;
     private ArrayList<NotificationModel> notificationModels;
     private ArrayList<TodoModel> todoModels;
+    private ArrayList<TodoModel> thingModels; // 준비물
     private ArrayList<FlightModel> flightModels; // 현재 비행 정보
 
     public UserModel(){}
@@ -17,20 +18,22 @@ public class UserModel {
         this.time = time;
     }
 
-    public UserModel(String name, String email, String time, ArrayList<NotificationModel> notificationModels, ArrayList<TodoModel> todoModels) {
+    public UserModel(String name, String email, String time, ArrayList<NotificationModel> notificationModels, ArrayList<TodoModel> todoModels, ArrayList<TodoModel> thingModels) {
         this.name = name;
         this.email = email;
         this.time = time;
         this.notificationModels = notificationModels;
         this.todoModels = todoModels;
+        this.thingModels = thingModels;
     }
 
-    public UserModel(String name, String email, String time, ArrayList<NotificationModel> notificationModels, ArrayList<TodoModel> todoModels, ArrayList<FlightModel> flightModels) {
+    public UserModel(String name, String email, String time, ArrayList<NotificationModel> notificationModels, ArrayList<TodoModel> todoModels, ArrayList<TodoModel> thingModels, ArrayList<FlightModel> flightModels) {
         this.name = name;
         this.email = email;
         this.time = time;
         this.notificationModels = notificationModels;
         this.todoModels = todoModels;
+        this.thingModels = thingModels;
         this.flightModels = flightModels;
     }
 
@@ -64,6 +67,14 @@ public class UserModel {
 
     public void setNotificationModels(ArrayList<NotificationModel> notificationModels) {
         this.notificationModels = notificationModels;
+    }
+
+    public ArrayList<TodoModel> getThingModels() {
+        return thingModels;
+    }
+
+    public void setThingModels(ArrayList<TodoModel> thingModels) {
+        this.thingModels = thingModels;
     }
 
     public ArrayList<TodoModel> getTodoModels() {

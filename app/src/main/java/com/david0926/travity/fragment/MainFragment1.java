@@ -32,11 +32,6 @@ public class MainFragment1 extends Fragment {
     private Context mContext;
     private FragmentMain1Binding binding;
 
-    @Override
-    public void onAttach(@NotNull Context context) {
-        super.onAttach(context);
-        mContext = context;
-    }
 
     @Nullable
     @Override
