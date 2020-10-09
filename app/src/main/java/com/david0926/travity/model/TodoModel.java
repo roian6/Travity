@@ -22,6 +22,7 @@ public class TodoModel {
         this.msg = msg;
     }
 
+
     public boolean isFinished() {
         return Finished;
     }
@@ -29,4 +30,5 @@ public class TodoModel {
     public void setFinished(boolean finish) {
         Finished = finish;
     }
+
 }

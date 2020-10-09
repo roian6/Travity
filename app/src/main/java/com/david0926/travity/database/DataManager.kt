@@ -89,6 +89,25 @@ fun updateTodos(context: Context,arr: ArrayList<TodoModel>) {
 }
 
 /**
+ *  "자신의"  준비물 기록에 대해서만 수정하여 업로드 합니다.
+ *   변경사항은 UserCache에 자동으로 반영됩니다.
+ */
+fun updateThings(context: Context,arr: ArrayList<TodoModel>) {
+    var usermodel = UserCache.getUser(context);
+    usermodel.thingModels = arr;
+    db.collection("users")
+            .document(usermodel.email)
+            .set(usermodel)
+            .addOnSuccessListener {
+                Log.e("DataManager", "성공적으로 할일 기록을 저장하였습니다.")
+            }
+            .addOnFailureListener {
+
+            }
+    UserCache.setUser(context, usermodel)
+}
+
+/**
  *  "자신의"  알람 기록에 대해서만 수정하여 업로드 합니다.
  *   변경사항은 UserCache에 자동으로 반영됩니다.
  */
