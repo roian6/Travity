@@ -13,6 +13,7 @@ import com.david0926.travity.databinding.ActivityMainBinding;
 import com.david0926.travity.fragment.MainFragment1;
 import com.david0926.travity.fragment.MainFragment2;
 import com.david0926.travity.fragment.MainFragment3;
+import com.david0926.travity.fragment.MainFragment4;
 import com.david0926.travity.model.FlightModel;
 import com.david0926.travity.model.NotificationModel;
 import com.david0926.travity.model.TodoModel;
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.action_3:
                     switchFragment(MainFragment3.newInstance());
+                    break;
+                case R.id.action_4:
+                    switchFragment(MainFragment4.newInstance());
                     break;
             }
             return true;

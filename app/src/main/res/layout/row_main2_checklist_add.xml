@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginHorizontal="33dp"
-    android:layout_marginTop="12dp"
+    android:layout_marginTop="16dp"
     android:layout_marginBottom="4dp"
     android:background="@drawable/round_box_border_dot"
     android:padding="20dp">
@@ -25,7 +25,7 @@
         android:id="@+id/textView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="16dp"
         android:text="직접 추가하기"
         android:textSize="17sp"
         app:layout_constrainedWidth="true"

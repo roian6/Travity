@@ -24,7 +24,7 @@ public class SplashActivity extends AppCompatActivity {
                     .getString(this, "user_progress", "progress_welcome");
 
             // TODO: debug - remove this line to show welcome & onboard screen once
-            userProgress = "progress_welcome";
+            //userProgress = "progress_welcome";
 
             switch (userProgress) {
                 case "progress_welcome":

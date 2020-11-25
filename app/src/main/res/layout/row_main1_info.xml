@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="wrap_content">
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="24dp"
+        android:layout_marginVertical="16dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
         app:cardBackgroundColor="#fff"
         app:cardCornerRadius="10dp"
         app:cardElevation="10dp">
@@ -19,19 +21,19 @@
             android:padding="5dp">
 
             <ImageView
+                android:id="@+id/info_img"
                 android:layout_width="190dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="5dp"
-                android:id="@+id/info_img"
                 android:src="@drawable/beach" />
 
             <TextView
+                android:id="@+id/info_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosanskr_bold"
                 android:padding="15dp"
-                android:id="@+id/info_title"
                 android:text="출국 시 반입 금지 물품 안내"
                 android:textColor="#000000"
                 android:textSize="14sp" />
