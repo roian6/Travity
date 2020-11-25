@@ -7,6 +7,10 @@ public class FlightModel {
     private String startAirport, endAirport, Terminal, Gate, Seat;
     private Date startTime, endTime;
 
+    public FlightModel(){
+
+    }
+
     /**
      * @param startAirport 출발 공항
      * @param endAirport 도착 공항

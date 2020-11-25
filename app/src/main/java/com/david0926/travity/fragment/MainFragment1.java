@@ -40,7 +40,7 @@ public class MainFragment1 extends Fragment {
 
         ArrayList<InfoModel> infos = new ArrayList<>();
         infos.add(new InfoModel("https://dimg.donga.com/wps/NEWS/IMAGE/2019/07/28/96733177.3.jpg", "출국 시 반입 금지 물품 안내"));
-        infos.add(new InfoModel("https://www.sangte.co.kr/web/product/big/201709/80_shop1_940482.jpg", "셀프 체크인으로 편리하게!"));
+        infos.add(new InfoModel("https://lh3.googleusercontent.com/proxy/lWQjd14N9-Jz6JnMKDaFNP3raAlzjWuzpdGhv6bBrxb3PPxSps8oepuL3sX4BwxxAdL4g8geg_ZSIVO29RifGNh6EaHSj1UG-poQ6aWlExmqGSQQ_Gd_aQ", "셀프 체크인으로 편리하게!"));
 
         binding.infoRecyclerview.setAdapter(new InfoAdapter(infos));
         binding.infoRecyclerview.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));

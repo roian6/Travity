@@ -5,10 +5,10 @@ public class TodoModel {
     private String msg;
     private boolean Finished;
 
-    /**
-     * @param msg 할일 내용
-     * @param finish 할일은 끝냈능교
-     */
+    public TodoModel() {
+
+    }
+
     public TodoModel(String msg, boolean finish) {
         this.msg = msg;
         Finished = finish;
