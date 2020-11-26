@@ -1,15 +1,14 @@
 package com.david0926.travity.fragment;
 
+import android.app.Activity;
 import android.content.Context;
-import android.text.Editable;
-import android.text.Layout;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -19,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.david0926.travity.R;
 import com.david0926.travity.database.DataManagerKt;
+import com.david0926.travity.dialog.DialogDelete;
 import com.david0926.travity.model.TodoModel;
 
 import java.util.ArrayList;
@@ -68,14 +68,24 @@ public class ChecklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             EditViewHolder holder = (EditViewHolder) h;
             holder.delete.setOnClickListener(item -> {
-                list.remove(position);
-                holder.text.setText("");
-                notifyDataSetChanged();
+                DialogDelete dialog = new DialogDelete(context, (view)-> {
+                    // 삭제 눌렀을 때
+                    list.remove(position);
+                    holder.text.setText("");
+                    notifyDataSetChanged();
+                }, (view) -> {
+                    // 취소 눌렀을 때
+                });
+
+                dialog.show();
             });
             holder.text.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
                 public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
                     if(i == EditorInfo.IME_ACTION_NEXT) {
+                        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(textView.getWindowToken(), 0);
+
                         list.remove(position);
                         list.add(new TodoModel(textView.getText().toString(), false));
                         holder.text.setText("");
@@ -99,26 +109,33 @@ public class ChecklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             holder.text.setText(list.get(position).getMsg());
             holder.delete.setOnClickListener(item -> {
-                list.remove(position);
-                notifyDataSetChanged();
-                if(fragmentType.equals("Todo"))
-                    DataManagerKt.updateTodos(context, list);
-                else
-                    DataManagerKt.updateThings(context, list);
+                DialogDelete dialog = new DialogDelete(context, (view)-> {
+                    // 삭제 눌렀을 때
+                    list.remove(position);
+                    notifyDataSetChanged();
+                    if(fragmentType.equals("Todo"))
+                        DataManagerKt.updateTodos(context, list);
+                    else
+                        DataManagerKt.updateThings(context, list);
+                }, (view) -> {
+                    // 취소 눌렀을 때
+                });
+                dialog.show();
+
             });
 
             if(list.get(position).isFinished()) {
-                holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_normal_primary));
+                holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_selected));
             } else {
-                holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_normal));
+                holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_normal_primary));
             }
 
             holder.check.setOnClickListener(item -> {
                 list.get(position).setFinished(!list.get(position).isFinished());
                 if(list.get(position).isFinished()) {
-                    holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_normal_primary));
+                    holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_selected));
                 } else {
-                    holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_normal));
+                    holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_normal_primary));
                 }
                 if(fragmentType.equals("Todo"))
                     DataManagerKt.updateTodos(context, list);

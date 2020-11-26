@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.david0926.travity.R;
 import com.david0926.travity.databinding.ActivityRegisterBinding;
+import com.david0926.travity.dialog.DialogFinishRegister;
 
 
 public class RegisterActivity extends AppCompatActivity {
