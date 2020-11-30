@@ -2,7 +2,6 @@ package com.david0926.travity.fragment;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import com.david0926.travity.util.UserCache;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
 public class ChecklistFragment extends Fragment {
 
@@ -48,14 +46,14 @@ public class ChecklistFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         DataManagerKt.getDocument("users", UserCache.getUser(getContext()).getEmail(), result -> {
-            ArrayList<HashMap<String, Object>> temp = (ArrayList) result.get(fragmentType.equals("Todo") ? "todoModels" : "thingModels" );
+            ArrayList<HashMap<String, Object>> temp = (ArrayList) result.get(fragmentType.equals("Todo") ? "todoModels" : "thingsModels");
             ArrayList<TodoModel> list = new ArrayList<>();
             try {
                 for (HashMap<String, Object> item : temp) {
                     list.add(new TodoModel((String) item.get("msg"), (Boolean) item.get("finished")));
                 }
-            } catch(NullPointerException e) {
-
+            } catch (NullPointerException e) {
+                e.printStackTrace();
             }
 
             ChecklistAdapter adapter = new ChecklistAdapter(list, fragmentType, getContext());

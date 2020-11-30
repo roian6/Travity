@@ -40,7 +40,7 @@ public class MainFragment2 extends Fragment {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_main2, container, false);
 
         binding.viewpager.setAdapter(new ViewpagerAdapater(getActivity()));
-        new TabLayoutMediator(binding.tabLayout, binding.viewpager, (tab, position) -> {tab.setText(position == 0 ? "할일" : "준비물");}).attach();
+        new TabLayoutMediator(binding.tabLayout, binding.viewpager, (tab, position) -> {tab.setText(position == 0 ? "준비물" : "할일");}).attach();
 
         return binding.getRoot();
     }

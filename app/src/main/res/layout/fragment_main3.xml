@@ -25,15 +25,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <View
+            android:id="@+id/view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="18dp"
+            android:background="@color/colorGrayBright"
+            app:layout_constraintTop_toBottomOf="@id/textView22" />
+
         <ImageView
             android:id="@+id/imageView10"
             android:layout_width="match_parent"
             android:layout_height="256dp"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="4dp"
             android:scaleType="fitXY"
             android:src="@drawable/test_card"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView22" />
+            app:layout_constraintTop_toBottomOf="@+id/view" />
 
         <TextView
             android:id="@+id/textView13"
@@ -46,7 +56,7 @@
             android:textColor="#3969ff"
             android:textSize="36sp"
             app:layout_constraintEnd_toStartOf="@+id/imageView11"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageView10"
             app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
         <ImageView
@@ -71,7 +81,7 @@
             android:text="TPE"
             android:textColor="#3969ff"
             android:textSize="36sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/imageView10"
             app:layout_constraintStart_toEndOf="@+id/imageView11"
             app:layout_constraintTop_toTopOf="@+id/imageView11" />
 
@@ -79,6 +89,7 @@
             android:id="@+id/textView16"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="14dp"
             android:layout_marginTop="64dp"
             android:layout_marginEnd="56dp"
             android:fontFamily="@font/notosanskr_regular"
@@ -86,7 +97,7 @@
             android:textColor="#000000"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/textView15"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageView10"
             app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
         <TextView
@@ -97,8 +108,10 @@
             android:text="Gate"
             android:textColor="#000000"
             android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/imageView10"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/imageView10"
             app:layout_constraintTop_toTopOf="@+id/textView16" />
 
         <TextView
@@ -110,7 +123,7 @@
             android:text="Seat"
             android:textColor="#000000"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/imageView10"
             app:layout_constraintStart_toEndOf="@+id/textView15"
             app:layout_constraintTop_toTopOf="@+id/textView15" />
 
@@ -119,13 +132,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="100dp"
             android:fontFamily="@font/notosanskr_bold"
             android:text="2"
             android:textColor="#000000"
             android:textSize="14sp"
-            app:layout_constraintEnd_toStartOf="@+id/textView17"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView16"
             app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
         <TextView
@@ -137,9 +148,8 @@
             android:text="D6"
             android:textColor="#000000"
             android:textSize="14sp"
-            app:layout_constraintHorizontal_bias="0.484"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView15"
             app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
 
@@ -147,22 +157,19 @@
             android:id="@+id/textView19_"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="64dp"
             android:layout_marginTop="4dp"
             android:fontFamily="@font/notosanskr_bold"
             android:text="75G"
             android:textColor="#000000"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView17"
+            app:layout_constraintStart_toStartOf="@+id/textView18"
             app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="346dp"
             android:layout_margin="24dp"
-            android:background="@drawable/round_box"
-            android:backgroundTint="@color/colorPrimary"
+            android:background="@drawable/bg_onboarding"
             android:elevation="4dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

@@ -36,7 +36,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@drawable/square_border"
                 android:fontFamily="@font/notosanskr_bold"
                 android:text="정말로 삭제하시겠습니까?"
                 android:textSize="17sp"

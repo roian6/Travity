@@ -1,6 +1,5 @@
 package com.david0926.travity.fragment;
 
-import android.app.Activity;
 import android.content.Context;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -14,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.david0926.travity.R;
@@ -31,6 +31,7 @@ public class ChecklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private final int INPUT = -10002;
 
     Context context;
+
     public ChecklistAdapter(ArrayList<TodoModel> list, String type, Context context) {
         this.list = list;
         fragmentType = type;
@@ -43,7 +44,7 @@ public class ChecklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         RecyclerView.ViewHolder vh = null;
         Log.d("now view type", viewType + " ");
-        if(viewType == DEFAULT) {
+        if (viewType == DEFAULT) {
             View view = inflater.inflate(R.layout.row_main2_checklist, parent, false);
             vh = new ChecklistAdapter.ViewHolder(view);
         } else if (viewType == FOOTER) {
@@ -58,17 +59,17 @@ public class ChecklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder h, int position) {
-        if(h instanceof  ChecklistAdapter.FooterViewHolder) {
+        if (h instanceof ChecklistAdapter.FooterViewHolder) {
             FooterViewHolder holder = (FooterViewHolder) h;
             holder.itemView.setOnClickListener(item -> {
                 list.add(new TodoModel(null, false));
                 notifyDataSetChanged();
             });
-        } else if(h instanceof  ChecklistAdapter.EditViewHolder) {
+        } else if (h instanceof ChecklistAdapter.EditViewHolder) {
 
             EditViewHolder holder = (EditViewHolder) h;
             holder.delete.setOnClickListener(item -> {
-                DialogDelete dialog = new DialogDelete(context, (view)-> {
+                DialogDelete dialog = new DialogDelete(context, (view) -> {
                     // 삭제 눌렀을 때
                     list.remove(position);
                     holder.text.setText("");
@@ -79,28 +80,25 @@ public class ChecklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
                 dialog.show();
             });
-            holder.text.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                @Override
-                public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-                    if(i == EditorInfo.IME_ACTION_NEXT) {
-                        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(textView.getWindowToken(), 0);
+            holder.text.setOnEditorActionListener((textView, i, keyEvent) -> {
+                if (i == EditorInfo.IME_ACTION_NEXT) {
+                    InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(textView.getWindowToken(), 0);
 
-                        list.remove(position);
-                        list.add(new TodoModel(textView.getText().toString(), false));
-                        holder.text.setText("");
-                        notifyDataSetChanged();
-                        if(fragmentType.equals("Todo"))
-                            DataManagerKt.updateTodos(context, list);
-                        else
-                            DataManagerKt.updateThings(context, list);
-                        return true;
-                    }
-                    return false;
+                    list.remove(position);
+                    list.add(new TodoModel(textView.getText().toString(), false));
+                    holder.text.setText("");
+                    notifyDataSetChanged();
+                    if (fragmentType.equals("Todo"))
+                        DataManagerKt.updateTodos(context, list);
+                    else
+                        DataManagerKt.updateThings(context, list);
+                    return true;
                 }
+                return false;
             });
 
-        } else if(h instanceof  ChecklistAdapter.EmptyViewHolder) {
+        } else if (h instanceof ChecklistAdapter.EmptyViewHolder) {
             EmptyViewHolder holder = (EmptyViewHolder) h;
 
 
@@ -109,11 +107,11 @@ public class ChecklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             holder.text.setText(list.get(position).getMsg());
             holder.delete.setOnClickListener(item -> {
-                DialogDelete dialog = new DialogDelete(context, (view)-> {
+                DialogDelete dialog = new DialogDelete(context, (view) -> {
                     // 삭제 눌렀을 때
                     list.remove(position);
                     notifyDataSetChanged();
-                    if(fragmentType.equals("Todo"))
+                    if (fragmentType.equals("Todo"))
                         DataManagerKt.updateTodos(context, list);
                     else
                         DataManagerKt.updateThings(context, list);
@@ -124,20 +122,24 @@ public class ChecklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
             });
 
-            if(list.get(position).isFinished()) {
-                holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_selected));
+            if (list.get(position).isFinished()) {
+                holder.check.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_check_selected));
+                holder.bg.setBackground(ContextCompat.getDrawable(context, R.drawable.round_box_border));
             } else {
-                holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_normal_primary));
+                holder.check.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_check_normal_primary));
+                holder.bg.setBackground(ContextCompat.getDrawable(context, R.drawable.round_box));
             }
 
             holder.check.setOnClickListener(item -> {
                 list.get(position).setFinished(!list.get(position).isFinished());
-                if(list.get(position).isFinished()) {
-                    holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_selected));
+                if (list.get(position).isFinished()) {
+                    holder.check.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_check_selected));
+                    holder.bg.setBackground(ContextCompat.getDrawable(context, R.drawable.round_box_border));
                 } else {
-                    holder.check.setImageDrawable(context.getDrawable(R.drawable.ic_check_normal_primary));
+                    holder.check.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_check_normal_primary));
+                    holder.bg.setBackground(ContextCompat.getDrawable(context, R.drawable.round_box));
                 }
-                if(fragmentType.equals("Todo"))
+                if (fragmentType.equals("Todo"))
                     DataManagerKt.updateTodos(context, list);
                 else
                     DataManagerKt.updateThings(context, list);
@@ -149,28 +151,29 @@ public class ChecklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public int getItemViewType(int position) {
 
 
-        if(position == list.size())
+        if (position == list.size())
             return FOOTER;
+        else if (list.get(position).getMsg() == null)
+            return INPUT;
         else
-            if(list.get(position).getMsg() == null)
-                    return INPUT;
-                else
-                    return DEFAULT;
+            return DEFAULT;
 
 
     }
 
     @Override
     public int getItemCount() {
-        return list.size()+1;
+        return list.size() + 1;
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
+        View bg;
         TextView text;
         ImageView delete, check;
+
         ViewHolder(View view) {
             super(view);
-
+            bg = view.findViewById(R.id.constraint_row_main2);
             text = view.findViewById(R.id.textView23);
             delete = view.findViewById(R.id.imageView16);
             check = view.findViewById(R.id.imageView14);
@@ -187,6 +190,7 @@ public class ChecklistAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public class EditViewHolder extends RecyclerView.ViewHolder {
         EditText text;
         ImageView delete, check;
+
         EditViewHolder(View view) {
             super(view);
 
